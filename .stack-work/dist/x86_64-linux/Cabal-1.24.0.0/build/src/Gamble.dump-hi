@@ -1,0 +1,344 @@
+
+==================== FINAL INTERFACE ====================
+2016-10-02 02:02:53.93262732 UTC
+
+interface ProbMonad-0.1.0.0-HzyMXLsBCzOJ3IcnWfm09n:Gamble 8001
+  interface hash: f671bb4434743739902f6c5e10de908d
+  ABI hash: 75ee54c4252a96047b701a7d8f5109eb
+  export-list hash: 62647681cc1cdd0eb7f20db199c46d67
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: b159a15c55fa7c6870cb2eb79bbae5a5
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Gamble.Flip{Gamble.H Gamble.T}
+  Gamble.Roll{Gamble.Face}
+module dependencies:
+package dependencies: base-4.9.0.0* ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.0.0:GHC.Base base-4.9.0.0:GHC.Float
+family instance modules: base-4.9.0.0:Control.Applicative
+                         base-4.9.0.0:Data.Either base-4.9.0.0:Data.Functor.Const
+                         base-4.9.0.0:Data.Monoid base-4.9.0.0:Data.Type.Equality
+                         base-4.9.0.0:GHC.Generics base-4.9.0.0:GHC.IO.Exception
+                         base-4.9.0.0:GHC.TypeLits
+import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
+import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
+import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+a96ec3d17c32ead51da50f3f717e7ecd
+  $fEqFlip :: GHC.Classes.Eq Gamble.Flip
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Gamble.Flip Gamble.$fEqFlip_$c== Gamble.$fEqFlip_$c/= -}
+a96ec3d17c32ead51da50f3f717e7ecd
+  $fEqFlip_$c/= :: Gamble.Flip -> Gamble.Flip -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: Gamble.Flip) (b :: Gamble.Flip) ->
+                 case a of wild {
+                   Gamble.H
+                   -> case b of wild1 {
+                        Gamble.H -> GHC.Types.False Gamble.T -> GHC.Types.True }
+                   Gamble.T
+                   -> case b of wild1 {
+                        Gamble.H -> GHC.Types.True Gamble.T -> GHC.Types.False } }) -}
+a96ec3d17c32ead51da50f3f717e7ecd
+  $fEqFlip_$c== :: Gamble.Flip -> Gamble.Flip -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: Gamble.Flip) (ds1 :: Gamble.Flip) ->
+                 case ds of wild {
+                   Gamble.H
+                   -> case ds1 of wild1 {
+                        Gamble.H -> GHC.Types.True Gamble.T -> GHC.Types.False }
+                   Gamble.T
+                   -> case ds1 of wild1 {
+                        Gamble.H -> GHC.Types.False Gamble.T -> GHC.Types.True } }) -}
+fd12c3eb2ea187b52ebac86bea767ba9
+  $fEqRoll :: GHC.Classes.Eq Gamble.Roll
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Gamble.Roll Gamble.$fEqRoll_$c== Gamble.$fEqRoll_$c/= -}
+fd12c3eb2ea187b52ebac86bea767ba9
+  $fEqRoll_$c/= :: Gamble.Roll -> Gamble.Roll -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(S(S)),1*U(1*U(U))><S(S(S)),1*U(1*U(U))>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: Gamble.Roll) (b :: Gamble.Roll) ->
+                 case a of wild { Gamble.Face a1 ->
+                 case b of wild1 { Gamble.Face b1 ->
+                 case a1 of wild2 { GHC.Types.I# x ->
+                 case b1 of wild3 { GHC.Types.I# y ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.==# x y) of wild4 {
+                   GHC.Types.False -> GHC.Types.True
+                   GHC.Types.True -> GHC.Types.False } } } } }) -}
+fd12c3eb2ea187b52ebac86bea767ba9
+  $fEqRoll_$c== :: Gamble.Roll -> Gamble.Roll -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(S(S)),1*U(1*U(U))><S(S(S)),1*U(1*U(U))>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: Gamble.Roll) (ds1 :: Gamble.Roll) ->
+                 case ds of wild { Gamble.Face a1 ->
+                 case ds1 of wild1 { Gamble.Face b1 ->
+                 GHC.Classes.eqInt a1 b1 } }) -}
+a96ec3d17c32ead51da50f3f717e7ecd
+  $fShowFlip :: GHC.Show.Show Gamble.Flip
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Gamble.Flip
+                  Gamble.$fShowFlip_$cshowsPrec
+                  Gamble.$fShowFlip_$cshow
+                  Gamble.$fShowFlip_$cshowList -}
+a96ec3d17c32ead51da50f3f717e7ecd
+  $fShowFlip1 :: Gamble.Flip -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: Gamble.Flip) (eta :: GHC.Base.String) ->
+                 case ds of wild {
+                   Gamble.H
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Gamble.$fShowFlip3)
+                        eta
+                   Gamble.T
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Gamble.$fShowFlip2)
+                        eta }) -}
+bcb1ae79ffb721172559f8810eb3f49b
+  $fShowFlip2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "T"#) -}
+705f3016a686478fa4540d4b0523976c
+  $fShowFlip3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "H"#) -}
+a96ec3d17c32ead51da50f3f717e7ecd
+  $fShowFlip_$cshow :: Gamble.Flip -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Gamble.Flip) ->
+                 case x of wild {
+                   Gamble.H -> Gamble.$fShowFlip3 Gamble.T -> Gamble.$fShowFlip2 }) -}
+a96ec3d17c32ead51da50f3f717e7ecd
+  $fShowFlip_$cshowList :: [Gamble.Flip] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ Gamble.Flip
+                   Gamble.$fShowFlip1) -}
+a96ec3d17c32ead51da50f3f717e7ecd
+  $fShowFlip_$cshowsPrec ::
+    GHC.Types.Int -> Gamble.Flip -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (ds :: GHC.Types.Int)
+                   (ds1 :: Gamble.Flip)
+                   (eta :: GHC.Base.String) ->
+                 case ds1 of wild {
+                   Gamble.H
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Gamble.$fShowFlip3)
+                        eta
+                   Gamble.T
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Gamble.$fShowFlip2)
+                        eta }) -}
+fd12c3eb2ea187b52ebac86bea767ba9
+  $fShowRoll :: GHC.Show.Show Gamble.Roll
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Gamble.Roll
+                  Gamble.$fShowRoll_$cshowsPrec
+                  Gamble.$fShowRoll_$cshow
+                  Gamble.$fShowRoll_$cshowList -}
+fd12c3eb2ea187b52ebac86bea767ba9
+  $fShowRoll1 :: Gamble.Roll -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (\ (w :: Gamble.Roll) (w1 :: GHC.Base.String) ->
+                 case w of ww { Gamble.Face ww1 ->
+                 Gamble.$w$cshowsPrec 0# ww1 w1 }) -}
+9cb8cffea5b4f7de137a37d7abab6f06
+  $fShowRoll2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Face "#) -}
+fd12c3eb2ea187b52ebac86bea767ba9
+  $fShowRoll_$cshow :: Gamble.Roll -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U(1*U(U))>, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Gamble.Roll) ->
+                 case w of ww { Gamble.Face ww1 -> Gamble.$w$cshow ww1 }) -}
+fd12c3eb2ea187b52ebac86bea767ba9
+  $fShowRoll_$cshowList :: [Gamble.Roll] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ Gamble.Roll
+                   Gamble.$fShowRoll1) -}
+fd12c3eb2ea187b52ebac86bea767ba9
+  $fShowRoll_$cshowsPrec ::
+    GHC.Types.Int -> Gamble.Roll -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U(U))><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: Gamble.Roll)
+                   (w2 :: GHC.Base.String) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case w1 of ww2 { Gamble.Face ww3 ->
+                 Gamble.$w$cshowsPrec ww1 ww3 w2 } }) -}
+a8983d096b6ea07d9a9c43baa440e94c
+  $tc'Face :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   16995827575822316034##
+                   521055016564355973##
+                   Gamble.$trModule
+                   Gamble.$tc'Face1) -}
+6cf3fd25958c3e54ba0a9884cc39ad4d
+  $tc'Face1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Face"#) -}
+c541a977a4b158c7f1081b18d5d1be5a
+  $tc'H :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   10049857558049157978##
+                   8407126781842295687##
+                   Gamble.$trModule
+                   Gamble.$tc'H1) -}
+51ac470956e7cebd4d6868094d0d6fb7
+  $tc'H1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'H"#) -}
+5351778b5ee108403a8de15d6048c28d
+  $tc'T :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   9345304204301808003##
+                   4539343411659121419##
+                   Gamble.$trModule
+                   Gamble.$tc'T1) -}
+a02891275d6172315838251ad846bcf5
+  $tc'T1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'T"#) -}
+f6d9fa53f6089e4925bc8b35c4a8f9ff
+  $tcFlip :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   8229540017451967496##
+                   15659104850541142357##
+                   Gamble.$trModule
+                   Gamble.$tcFlip1) -}
+0697aee29740ba07bacf219cb9e561e6
+  $tcFlip1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Flip"#) -}
+496615e49ee862c7fe80a4dbebc4c615
+  $tcRoll :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   5649863077935441319##
+                   13442103323616693222##
+                   Gamble.$trModule
+                   Gamble.$tcRoll1) -}
+1eb5cd472282b007e840a081a8051193
+  $tcRoll1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Roll"#) -}
+74f2cd03ac586dd2a346721e955cb422
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Gamble.$trModule2
+                   Gamble.$trModule1) -}
+49e7468cc558af992b455e63d050605c
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Gamble"#) -}
+408e7d9bac301216b4977d5dd7c9ab1f
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "ProbMonad-0.1.0.0-HzyMXLsBCzOJ3IcnWfm09n"#) -}
+3104d6e6ecf90c19cc5b7b8678b9aa0a
+  $w$cshow :: GHC.Types.Int -> GHC.Base.String
+  {- Arity: 1, Strictness: <L,1*U(U)>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Types.Int) ->
+                 GHC.Base.++
+                   @ GHC.Types.Char
+                   Gamble.$fShowRoll2
+                   (case ww of ww2 { GHC.Types.I# ww3 ->
+                    case GHC.Show.$wshowSignedInt
+                           11#
+                           ww3
+                           (GHC.Types.[] @ GHC.Types.Char) of ww4 { (#,#) ww5 ww6 ->
+                    GHC.Types.: @ GHC.Types.Char ww5 ww6 } })) -}
+b5074bd2a1f27b4a2fdf70b7fe65cb4b
+  $w$cshowsPrec ::
+    GHC.Prim.Int#
+    -> GHC.Types.Int -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 3, Strictness: <S,U><L,1*U(U)><L,U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#)
+                   (ww1 :: GHC.Types.Int)
+                   (w :: GHC.Base.String) ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 11#) of wild {
+                   GHC.Types.False
+                   -> GHC.Base.++
+                        @ GHC.Types.Char
+                        Gamble.$fShowRoll2
+                        (case ww1 of ww2 { GHC.Types.I# ww3 ->
+                         case GHC.Show.$wshowSignedInt 11# ww3 w of ww4 { (#,#) ww5 ww6 ->
+                         GHC.Types.: @ GHC.Types.Char ww5 ww6 } })
+                   GHC.Types.True
+                   -> GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.shows9
+                        (GHC.Base.++
+                           @ GHC.Types.Char
+                           Gamble.$fShowRoll2
+                           (case ww1 of ww2 { GHC.Types.I# ww3 ->
+                            case GHC.Show.$wshowSignedInt
+                                   11#
+                                   ww3
+                                   (GHC.Types.:
+                                      @ GHC.Types.Char
+                                      GHC.Show.shows6
+                                      w) of ww4 { (#,#) ww5 ww6 ->
+                            GHC.Types.: @ GHC.Types.Char ww5 ww6 } })) }) -}
+a96ec3d17c32ead51da50f3f717e7ecd
+  data Flip = H | T
+fd12c3eb2ea187b52ebac86bea767ba9
+  data Roll = Face GHC.Types.Int
+instance [safe] GHC.Classes.Eq [Gamble.Flip] = Gamble.$fEqFlip
+instance [safe] GHC.Classes.Eq [Gamble.Roll] = Gamble.$fEqRoll
+instance [safe] GHC.Show.Show [Gamble.Flip] = Gamble.$fShowFlip
+instance [safe] GHC.Show.Show [Gamble.Roll] = Gamble.$fShowRoll
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

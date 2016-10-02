@@ -1,0 +1,567 @@
+
+==================== FINAL INTERFACE ====================
+2016-10-01 22:58:56.696627625 UTC
+
+interface ProbMonad-0.1.0.0-HzyMXLsBCzOJ3IcnWfm09n:Simulate 8001
+  interface hash: 523d681afae8c6c7703d8919ccda5c3d
+  ABI hash: 5361a3c25204a2290f05dff320715842
+  export-list hash: d4dab2b75bd0d4d9b3e0c70f465cb8e2
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: b159a15c55fa7c6870cb2eb79bbae5a5
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Simulate.normalize
+  Simulate.uniform
+  Simulate.P{Simulate.P}
+module dependencies:
+package dependencies: base-4.9.0.0* ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.0.0:GHC.Base base-4.9.0.0:GHC.Float
+family instance modules: base-4.9.0.0:Control.Applicative
+                         base-4.9.0.0:Data.Either base-4.9.0.0:Data.Functor.Const
+                         base-4.9.0.0:Data.Monoid base-4.9.0.0:Data.Type.Equality
+                         base-4.9.0.0:GHC.Generics base-4.9.0.0:GHC.IO.Exception
+                         base-4.9.0.0:GHC.TypeLits
+import  -/  base-4.9.0.0:Control.Monad 7767aebfd53f0b584cef2fe66ad3986c
+import  -/  base-4.9.0.0:Data.Foldable 8aeb682f6c74f97fcf0ace0d608a43ea
+import  -/  base-4.9.0.0:Data.Ratio bd7ae7e84fadf68e9483b9d3f1445f8c
+import  -/  base-4.9.0.0:Data.Tuple acb0ed10307ed88df6c81b8589f4de16
+import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
+import  -/  base-4.9.0.0:GHC.List 13d2451194c1c6e53b4f4f07947736dd
+import  -/  base-4.9.0.0:GHC.Num 48f506a8f4ecf06285d0a0706594dcc0
+import  -/  base-4.9.0.0:GHC.Real 08bf4acb5f2508f89d6fbcd57fe232e9
+import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
+import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+7fe6d61848f02560d6fe2b519d9d7153
+  $fApplicativeP :: GHC.Base.Applicative Simulate.P
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Simulate.P
+                  Simulate.$fFunctorP
+                  Simulate.$fApplicativeP_$cpure
+                  Simulate.$fApplicativeP_$c<*>
+                  Simulate.$fApplicativeP_$c*>
+                  Simulate.$fApplicativeP_$c<* -}
+67d5c855795faf94a947a5af91d6939b
+  $fApplicativeP1 :: GHC.Real.Rational
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Real.:%
+                   @ GHC.Integer.Type.Integer
+                   Simulate.$fApplicativeP_dt
+                   GHC.Real.$fEnumRatio1) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fApplicativeP2 :: a -> Simulate.P (b -> a)
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (\ @ b @ a (x1 :: a) ->
+                 Simulate.P
+                   @ (b -> a)
+                   (GHC.Types.:
+                      @ (b -> a, GHC.Real.Rational)
+                      (\ (ds :: b) -> x1, Simulate.$fApplicativeP1)
+                      (GHC.Types.[] @ (b -> a, GHC.Real.Rational)))) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fApplicativeP3 :: a -> Simulate.P (b -> b)
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (\ @ b @ a (x1 :: a) -> Simulate.$fApplicativeP4 @ b) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fApplicativeP4 :: Simulate.P (b -> b)
+  {- HasNoCafRefs,
+     Unfolding: (\ @ b ->
+                 Simulate.P @ (b -> b) (Simulate.$fApplicativeP5 @ b)) -}
+9d9bd5fbf4c9d613aa44b160a0b8a6af
+  $fApplicativeP5 :: [(b -> b, GHC.Real.Rational)]
+  {- HasNoCafRefs,
+     Unfolding: (\ @ b ->
+                 GHC.Types.:
+                   @ (b -> b, GHC.Real.Rational)
+                   (Simulate.$fApplicativeP6 @ b)
+                   (GHC.Types.[] @ (b -> b, GHC.Real.Rational))) -}
+f180c89c87933a9964f6091d1177f40e
+  $fApplicativeP6 :: (b -> b, GHC.Real.Rational)
+  {- HasNoCafRefs,
+     Unfolding: (\ @ b ->
+                 (GHC.Base.breakpoint @ b, Simulate.$fApplicativeP1)) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fApplicativeP_$c*> :: Simulate.P a -> Simulate.P b -> Simulate.P b
+  {- Arity: 2, Strictness: <S,1*U(1*U)><L,U(U)>m, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a @ b (w :: Simulate.P a) (w1 :: Simulate.P b) ->
+                 case w of ww { Simulate.P ww1 ->
+                 case Simulate.$w$c>>=
+                        @ a
+                        @ (b -> b)
+                        ww1
+                        (Simulate.$fApplicativeP3 @ b @ a) of ww2 { Unit# ww3 ->
+                 case Simulate.$w$c<*> @ b @ b ww3 w1 of ww4 { Unit# ww5 ->
+                 Simulate.P @ b ww5 } } }) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fApplicativeP_$c<* :: Simulate.P a -> Simulate.P b -> Simulate.P a
+  {- Arity: 2, Strictness: <S,1*U(1*U)><L,U(U)>m, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a @ b (w :: Simulate.P a) (w1 :: Simulate.P b) ->
+                 case w of ww { Simulate.P ww1 ->
+                 case Simulate.$w$c>>=
+                        @ a
+                        @ (b -> a)
+                        ww1
+                        (Simulate.$fApplicativeP2 @ b @ a) of ww2 { Unit# ww3 ->
+                 case Simulate.$w$c<*> @ b @ a ww3 w1 of ww4 { Unit# ww5 ->
+                 Simulate.P @ a ww5 } } }) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fApplicativeP_$c<*> ::
+    Simulate.P (a -> b) -> Simulate.P a -> Simulate.P b
+  {- Arity: 2, Strictness: <S,1*U(1*U)><L,U(U)>m, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a @ b (w :: Simulate.P (a -> b)) (w1 :: Simulate.P a) ->
+                 case w of ww { Simulate.P ww1 ->
+                 case Simulate.$w$c<*> @ a @ b ww1 w1 of ww2 { Unit# ww3 ->
+                 Simulate.P @ b ww3 } }) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fApplicativeP_$cpure :: a -> Simulate.P a
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U>m,
+     Unfolding: InlineRule (0, True, True)
+                Simulate.$fApplicativeP_$creturn -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fApplicativeP_$creturn :: a -> Simulate.P a
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ a (x :: a) ->
+                 Simulate.P
+                   @ a
+                   (GHC.Types.:
+                      @ (a, GHC.Real.Rational)
+                      (x, Simulate.$fApplicativeP1)
+                      (GHC.Types.[] @ (a, GHC.Real.Rational)))) -}
+3efa69f0c74a6fd75528073ea3db2062
+  $fApplicativeP_dt :: GHC.Integer.Type.Integer
+  {- HasNoCafRefs, Unfolding: (1) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fFunctorP :: GHC.Base.Functor Simulate.P
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Simulate.P Simulate.$fFunctorP_$cfmap Simulate.$fFunctorP_$c<$ -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fFunctorP_$c<$ :: a -> Simulate.P b -> Simulate.P a
+  {- Arity: 2, Strictness: <L,U><S,1*U(1*U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a @ b (eta :: a) (eta1 :: Simulate.P b) ->
+                 Simulate.$fFunctorP_$c>>=
+                   @ b
+                   @ a
+                   eta1
+                   (\ (x1 :: b) ->
+                    Simulate.P
+                      @ a
+                      (GHC.Types.:
+                         @ (a, GHC.Real.Rational)
+                         (eta, Simulate.$fApplicativeP1)
+                         (GHC.Types.[] @ (a, GHC.Real.Rational))))) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fFunctorP_$c>>= ::
+    Simulate.P a -> (a -> Simulate.P b) -> Simulate.P b
+  {- Arity: 2, Strictness: <S,1*U(1*U)><L,C(U(1*U))>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a @ b (w :: Simulate.P a) (w1 :: a -> Simulate.P b) ->
+                 case w of ww { Simulate.P ww1 ->
+                 case Simulate.$w$c>>= @ a @ b ww1 w1 of ww2 { Unit# ww3 ->
+                 Simulate.P @ b ww3 } }) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fFunctorP_$cfmap :: (a -> b) -> Simulate.P a -> Simulate.P b
+  {- Arity: 2, Strictness: <L,C(U)><S,1*U(1*U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a @ b (f :: a -> b) (m1 :: Simulate.P a) ->
+                 Simulate.$fFunctorP_$c>>=
+                   @ a
+                   @ b
+                   m1
+                   (\ (x1 :: a) ->
+                    Simulate.P
+                      @ b
+                      (GHC.Types.:
+                         @ (b, GHC.Real.Rational)
+                         (f x1, Simulate.$fApplicativeP1)
+                         (GHC.Types.[] @ (b, GHC.Real.Rational))))) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fMonadP :: GHC.Base.Monad Simulate.P
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Simulate.P
+                  Simulate.$fMonadP_$cp1Monad
+                  Simulate.$fFunctorP_$c>>=
+                  Simulate.$fMonadP_$c>>
+                  Simulate.$fApplicativeP_$creturn
+                  Simulate.$fMonadP_$s$dmfail -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fMonadP_$c>> :: Simulate.P a -> Simulate.P b -> Simulate.P b
+  {- Arity: 2, Strictness: <L,U><L,U>, Inline: INLINE (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ a @ b (m1 :: Simulate.P a) (k :: Simulate.P b) ->
+                 Simulate.$fFunctorP_$c>>= @ a @ b m1 (\ (ds :: a) -> k)) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fMonadP_$cp1Monad :: GHC.Base.Applicative Simulate.P
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True) Simulate.$fApplicativeP -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fMonadP_$s$dmfail :: GHC.Base.String -> Simulate.P a
+  {- Arity: 1, Strictness: <B,U>x,
+     Unfolding: InlineRule (-1, True, True)
+                (\ @ a (s :: GHC.Base.String) ->
+                 GHC.Err.errorWithoutStackTrace
+                   @ 'GHC.Types.PtrRepLifted
+                   @ (Simulate.P a)
+                   s) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fShowP :: GHC.Show.Show a => GHC.Show.Show (Simulate.P a)
+  DFunId
+  {- Arity: 1, Strictness: <L,U(C(C1(C1(U))),A,A)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ a ($dShow :: GHC.Show.Show a).
+                  @ (Simulate.P a)
+                  (Simulate.$fShowP_$cshowsPrec @ a $dShow)
+                  (Simulate.$fShowP_$cshow @ a $dShow)
+                  (Simulate.$fShowP_$cshowList @ a $dShow) -}
+42773c420be4ed2f3ace6d5cc9f7069b
+  $fShowP1 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
+e6c39a1272050684c40554eeb4954376
+  $fShowP2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "P "#) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fShowP_$cshow ::
+    GHC.Show.Show a => Simulate.P a -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,U(C(C1(C1(U))),A,A)><S,1*U(1*U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a (w :: GHC.Show.Show a) (w1 :: Simulate.P a) ->
+                 case w1 of ww { Simulate.P ww1 -> Simulate.$w$cshow @ a w ww1 }) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fShowP_$cshowList ::
+    GHC.Show.Show a => [Simulate.P a] -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,U(C(C1(C1(U))),A,A)><S,1*U><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ a
+                   ($dShow :: GHC.Show.Show a)
+                   (eta :: [Simulate.P a])
+                   (eta1 :: GHC.Base.String) ->
+                 GHC.Show.showList__
+                   @ (Simulate.P a)
+                   (Simulate.$fShowP_$cshowsPrec @ a $dShow Simulate.$fShowP1)
+                   eta
+                   eta1) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $fShowP_$cshowsPrec ::
+    GHC.Show.Show a => GHC.Types.Int -> Simulate.P a -> GHC.Show.ShowS
+  {- Arity: 4,
+     Strictness: <L,U(C(C1(C1(U))),A,A)><S(S),1*U(U)><S,1*U(1*U)><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, False)
+                (\ @ a
+                   (w :: GHC.Show.Show a)
+                   (w1 :: GHC.Types.Int)
+                   (w2 :: Simulate.P a)
+                   (w3 :: GHC.Base.String) ->
+                 case w1 of ww { GHC.Types.I# ww1 ->
+                 case w2 of ww2 { Simulate.P ww3 ->
+                 Simulate.$w$cshowsPrec @ a w ww1 ww3 w3 } }) -}
+9f7e6d3a17fe3b5a9c5d9fee9e14ec8d
+  $tc'P :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2745433766034005847##
+                   7550108407270551238##
+                   Simulate.$trModule
+                   Simulate.$tc'P1) -}
+b5a406b25fcd2d53358498c8f74bc7d7
+  $tc'P1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'P"#) -}
+483015f591461874e9d956c4c9da0b53
+  $tcP :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   7012793649786615987##
+                   16330623443804885366##
+                   Simulate.$trModule
+                   Simulate.$tcP1) -}
+63f6f48f579137fb3a7acef4890056af
+  $tcP1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "P"#) -}
+287971caa537e27280196a9191b936e6
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Simulate.$trModule2
+                   Simulate.$trModule1) -}
+efe1cc32b9ec0f221ff9adf1f1e82c75
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Simulate"#) -}
+ec3a3029b2bae4be1d31b38283c99991
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "ProbMonad-0.1.0.0-HzyMXLsBCzOJ3IcnWfm09n"#) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $w$c<*> ::
+    [(a -> b, GHC.Real.Rational)]
+    -> Simulate.P a -> (# [(b, GHC.Real.Rational)] #)
+  {- Arity: 2, Strictness: <L,1*U><L,U(U)>, Inline: [0],
+     Unfolding: (\ @ a
+                   @ b
+                   (ww :: [(a -> b, GHC.Real.Rational)])
+                   (w :: Simulate.P a) ->
+                 Simulate.$w$c>>=
+                   @ (a -> b)
+                   @ b
+                   ww
+                   (\ (x1 :: a -> b) ->
+                    case w of ww1 { Simulate.P ww2 ->
+                    case Simulate.$w$c>>=
+                           @ a
+                           @ b
+                           ww2
+                           (\ (x2 :: a) ->
+                            Simulate.P
+                              @ b
+                              (GHC.Types.:
+                                 @ (b, GHC.Real.Rational)
+                                 (x1 x2, Simulate.$fApplicativeP1)
+                                 (GHC.Types.[] @ (b, GHC.Real.Rational)))) of ww3 { Unit# ww4 ->
+                    Simulate.P @ b ww4 } })) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  $w$c>>= ::
+    [(a, GHC.Real.Rational)]
+    -> (a -> Simulate.P b) -> (# [(b, GHC.Real.Rational)] #)
+  {- Arity: 2, Strictness: <L,1*U><L,C(U(1*U))>, Inline: [0],
+     Unfolding: (\ @ a
+                   @ b
+                   (ww :: [(a, GHC.Real.Rational)])
+                   (w :: a -> Simulate.P b) ->
+                 (# letrec {
+                      go :: [(a, GHC.Real.Rational)] -> [(b, GHC.Real.Rational)]
+                        {- Arity: 1, Strictness: <S,1*U> -}
+                      = \ (ds :: [(a, GHC.Real.Rational)]) ->
+                        case ds of wild {
+                          [] -> GHC.Types.[] @ (b, GHC.Real.Rational)
+                          : y ys
+                          -> case y of wild1 { (,) x px ->
+                             case w x of wild2 { Simulate.P yps ->
+                             GHC.Base.++
+                               @ (b, GHC.Real.Rational)
+                               (GHC.Base.map
+                                  @ (b, GHC.Real.Rational)
+                                  @ (b, GHC.Real.Rational)
+                                  (\ (ds1 :: (b, GHC.Real.Rational)) ->
+                                   case ds1 of wild3 { (,) y1 py ->
+                                   (y1, GHC.Real.$fFractionalRatio_$s$c* px py) })
+                                  yps)
+                               (go ys) } } }
+                    } in
+                    go ww #)) -}
+d10871d6c82bf1da000ed4af8415fe88
+  $w$cshow ::
+    GHC.Show.Show a => [(a, GHC.Real.Rational)] -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,U(C(C1(C1(U))),A,A)><L,1*U>,
+     Inline: [0],
+     Unfolding: (\ @ a
+                   (w :: GHC.Show.Show a)
+                   (ww :: [(a, GHC.Real.Rational)]) ->
+                 GHC.Base.++
+                   @ GHC.Types.Char
+                   Simulate.$fShowP2
+                   (GHC.Show.showList__
+                      @ (a, GHC.Real.Ratio GHC.Integer.Type.Integer)
+                      (\ (w3 :: (a, GHC.Real.Ratio GHC.Integer.Type.Integer))
+                         (w4 :: GHC.Base.String)[OneShot] ->
+                       case w3 of ww1 { (,) ww2 ww3 ->
+                       GHC.Types.:
+                         @ GHC.Types.Char
+                         GHC.Show.shows9
+                         (GHC.Show.showsPrec
+                            @ a
+                            w
+                            GHC.Show.shows22
+                            ww2
+                            (GHC.Types.:
+                               @ GHC.Types.Char
+                               GHC.Show.shows7
+                               (GHC.Show.$fShow(,)_$sgo
+                                  (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 w4)
+                                  (\ (w2 :: GHC.Base.String) ->
+                                   case ww3 of ww4 { GHC.Real.:% ww5 ww6 ->
+                                   case GHC.Real.$w$s$cshowsPrec
+                                          0#
+                                          ww5
+                                          ww6
+                                          w2 of ww7 { (#,#) ww8 ww9 ->
+                                   GHC.Types.: @ GHC.Types.Char ww8 ww9 } })
+                                  (GHC.Types.[] @ GHC.Show.ShowS)))) })
+                      ww
+                      (GHC.Types.[] @ GHC.Types.Char))) -}
+4cbe3296f32a14cf2894c0f654ff2595
+  $w$cshowsPrec ::
+    GHC.Show.Show a =>
+    GHC.Prim.Int#
+    -> [(a, GHC.Real.Rational)] -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 4, Strictness: <L,U(C(C1(C1(U))),A,A)><S,U><L,1*U><L,U>,
+     Inline: [0],
+     Unfolding: (\ @ a
+                   (w :: GHC.Show.Show a)
+                   (ww :: GHC.Prim.Int#)
+                   (ww1 :: [(a, GHC.Real.Rational)])
+                   (w1 :: GHC.Base.String) ->
+                 let {
+                   p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,U> -}
+                   = \ (x :: GHC.Base.String)[OneShot] ->
+                     GHC.Base.++
+                       @ GHC.Types.Char
+                       Simulate.$fShowP2
+                       (GHC.Show.showList__
+                          @ (a, GHC.Real.Ratio GHC.Integer.Type.Integer)
+                          (\ (w3 :: (a, GHC.Real.Ratio GHC.Integer.Type.Integer))
+                             (w4 :: GHC.Base.String)[OneShot] ->
+                           case w3 of ww2 { (,) ww3 ww4 ->
+                           GHC.Types.:
+                             @ GHC.Types.Char
+                             GHC.Show.shows9
+                             (GHC.Show.showsPrec
+                                @ a
+                                w
+                                GHC.Show.shows22
+                                ww3
+                                (GHC.Types.:
+                                   @ GHC.Types.Char
+                                   GHC.Show.shows7
+                                   (GHC.Show.$fShow(,)_$sgo
+                                      (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 w4)
+                                      (\ (w2 :: GHC.Base.String) ->
+                                       case ww4 of ww5 { GHC.Real.:% ww6 ww7 ->
+                                       case GHC.Real.$w$s$cshowsPrec
+                                              0#
+                                              ww6
+                                              ww7
+                                              w2 of ww8 { (#,#) ww9 ww10 ->
+                                       GHC.Types.: @ GHC.Types.Char ww9 ww10 } })
+                                      (GHC.Types.[] @ GHC.Show.ShowS)))) })
+                          ww1
+                          x)
+                 } in
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 11#) of wild {
+                   GHC.Types.False -> p w1
+                   GHC.Types.True
+                   -> GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.shows9
+                        (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 w1)) }) -}
+bccbebaee0915b8c2c6774ab4241a9f3
+  $wnormalize ::
+    GHC.Classes.Eq a =>
+    [(a, GHC.Real.Rational)] -> (# [(a, GHC.Real.Rational)] #)
+  {- Arity: 2, Strictness: <L,U(C(C1(U)),A)><L,1*U>, Inline: [0],
+     Unfolding: (\ @ a
+                   (w :: GHC.Classes.Eq a)
+                   (ww :: [(a, GHC.Real.Rational)]) ->
+                 (# letrec {
+                      go :: [(a, GHC.Real.Rational)] -> [(a, GHC.Real.Rational)]
+                        {- Arity: 1, Strictness: <S,1*U> -}
+                      = \ (ds :: [(a, GHC.Real.Rational)]) ->
+                        case ds of wild {
+                          [] -> GHC.Types.[] @ (a, GHC.Real.Rational)
+                          : y ys
+                          -> case y of wild1 { (,) y1 py ->
+                             let {
+                               yps :: [(a, GHC.Real.Rational)] = go ys
+                             } in
+                             case GHC.List.elem
+                                    @ a
+                                    w
+                                    y1
+                                    (GHC.Base.map
+                                       @ (a, GHC.Real.Rational)
+                                       @ a
+                                       (Data.Tuple.fst @ a @ GHC.Real.Rational)
+                                       yps) of wild2 {
+                               GHC.Types.False -> GHC.Types.: @ (a, GHC.Real.Rational) wild1 yps
+                               GHC.Types.True
+                               -> GHC.Base.map
+                                    @ (a, GHC.Real.Rational)
+                                    @ (a, GHC.Real.Rational)
+                                    (\ (ds1 :: (a, GHC.Real.Rational)) ->
+                                     case ds1 of wild3 { (,) y2 py1 ->
+                                     case GHC.Classes.== @ a w y1 y2 of wild4 {
+                                       GHC.Types.False -> wild3
+                                       GHC.Types.True
+                                       -> (y2, GHC.Real.$fEnumRatio_$s$c+ py py1) } })
+                                    yps } } }
+                    } in
+                    go ww #)) -}
+31d29b2e435e9f0f67f7453086575017
+  $wuniform :: [a] -> (# [(a, GHC.Real.Rational)] #)
+  {- Arity: 1, Strictness: <L,U>, Inline: [0],
+     Unfolding: (\ @ a (w :: [a]) ->
+                 (# GHC.List.zip
+                      @ a
+                      @ (GHC.Real.Ratio GHC.Integer.Type.Integer)
+                      w
+                      (let {
+                         x :: GHC.Real.Ratio GHC.Integer.Type.Integer
+                         = case GHC.List.$wlenAcc @ a w 0# of ww2 { DEFAULT ->
+                           let {
+                             w1 :: GHC.Integer.Type.Integer = GHC.Integer.Type.smallInteger ww2
+                           } in
+                           case GHC.Real.$w$sreduce
+                                  (GHC.Integer.Type.timesInteger
+                                     Simulate.$fApplicativeP_dt
+                                     (GHC.Integer.Type.signumInteger w1))
+                                  (GHC.Integer.Type.absInteger w1) of ww { (#,#) ww1 ww4 ->
+                           GHC.Real.:% @ GHC.Integer.Type.Integer ww1 ww4 } }
+                       } in
+                       letrec {
+                         xs :: [GHC.Real.Ratio GHC.Integer.Type.Integer]
+                         = GHC.Types.: @ (GHC.Real.Ratio GHC.Integer.Type.Integer) x xs
+                       } in
+                       xs) #)) -}
+7fe6d61848f02560d6fe2b519d9d7153
+  data P a = P [(a, GHC.Real.Rational)]
+e925dfb44e4a25bb36313f66eeb68af9
+  normalize :: GHC.Classes.Eq a => Simulate.P a -> Simulate.P a
+  {- Arity: 2, Strictness: <L,U(C(C1(U)),A)><S,1*U(1*U)>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a (w :: GHC.Classes.Eq a) (w1 :: Simulate.P a) ->
+                 case w1 of ww { Simulate.P ww1 ->
+                 case Simulate.$wnormalize @ a w ww1 of ww2 { Unit# ww3 ->
+                 Simulate.P @ a ww3 } }) -}
+15127e3173bcdc2aaf833219f70aa1ef
+  uniform :: [a] -> Simulate.P a
+  {- Arity: 1, Strictness: <L,U>m, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ @ a (w :: [a]) ->
+                 case Simulate.$wuniform @ a w of ww { Unit# ww1 ->
+                 Simulate.P @ a ww1 }) -}
+instance [safe] GHC.Base.Applicative [Simulate.P]
+  = Simulate.$fApplicativeP
+instance [safe] GHC.Base.Functor [Simulate.P] = Simulate.$fFunctorP
+instance [safe] GHC.Base.Monad [Simulate.P] = Simulate.$fMonadP
+instance [safe] GHC.Show.Show [Simulate.P] = Simulate.$fShowP
+"SPEC/Simulate $dmfail @ P" [ALWAYS] forall ($dMonad :: GHC.Base.Monad
+                                                          Simulate.P)
+  GHC.Base.$dmfail @ Simulate.P $dMonad = Simulate.$fMonadP_$s$dmfail
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+
