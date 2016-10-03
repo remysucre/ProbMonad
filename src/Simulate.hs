@@ -21,6 +21,12 @@ instance Monad P where
 uniform :: [a] -> P a
 uniform xs = P $ zip xs $ repeat (1 % (toInteger $ length xs))
 
+pOf :: P Bool -> Rational
+pOf (P bps) = foldl (\tp (b, p) -> if b then p + tp else tp) 0 bps
+
+support :: P a -> [a]
+support (P aps) = map fst aps
+
 normalize :: Eq a => P a -> P a
 normalize (P xs) = P $ foldr ins [] xs
   where ins (y, py) yps = if elem y (map fst yps) 
