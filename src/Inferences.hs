@@ -5,7 +5,6 @@ import Simulate
 import Infer
 
 import Data.List
-import Data.Enumerable
 import Data.Ratio
 import Control.Monad
 
