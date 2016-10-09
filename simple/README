@@ -1,8 +1,3 @@
 `ghc SimuInf.hs` builds binary
-`./SimuInf B` runs and prints problem B if implemented
-`./SimuInf diecoins` runs an example that demonstrates inference implementation 
 
-Simulation Interface has abstractions and implementation for modeling, and
-Inference Interface has abstractions and implementation for infering. 
-
-Simulation Problems and Inference Problems have solution code to the problems. 
+I have solved problems C and G, and both finished instantly. 
