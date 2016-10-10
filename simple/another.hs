@@ -15,16 +15,16 @@ small :: InfFace Bool
 small True = \f -> if f <= 3 then 1%3 else 0
 small False = \f -> if f > 3 then 1%3 else 0
 
--- | infer df @ [dist of f] lb @ [likelyhood of b from f]
+-- | infer da @ [prior dist of a] lb @ [likelyhood of b from a]
 infer :: Dist Face -> (Face -> Dist b) -> InfFace b
 -- [F] -> [b] -> (F -> Prob) -> (F -> (b -> Prob)) -> (b -> (F-> Prob))
-infer df lb = \b f -> lb f b * df f
+infer da lb = \b a -> lb a b * da a
 
 d6 :: Dist Face
 d6 n = if elem n [1..6] then 1%6 else 0
 
 mark :: Face -> Dist Bool
-mark f = \b -> if f <= 3 then (if b then 1 else 0)
+mark a = \b -> if a <= 3 then (if b then 1 else 0)
                          else (if b then 0 else 1)
 
 mark3 :: InfFace Bool
