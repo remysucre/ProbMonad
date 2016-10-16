@@ -21,27 +21,27 @@ class Monad m => ProbabilityMonad m where
 --------------------------------------------------------------
 
 
-type Dist a = a -> Prob
--- 
--- instance Functor Dist where
---   fmap  = liftM
--- 
--- instance Applicative Dist where
---   pure = return
---   (<*>) = ap
--- 
--- instance Monad Dist where
---   return x = \y -> if y == x then 1 else 0
---   (a -> Prob) -> (a -> (b -> Prob)) -> (b -> Prob)
---   dx >>= f = (\y -> forall x. dx x * f x y)
--- 
+newtype Dist a = Dist (a -> Prob)
+
+instance Functor Dist where
+  fmap  = liftM
+
+instance Applicative Dist where
+  pure = return
+  (<*>) = ap
+
+instance Monad Dist where
+  return x = Dist $ \y -> if y == x then 1 else 0
+  (Dist dx) >>= f = Dist $ \y -> \x -> dx x * let Dist dy = f x in dy y
+
+
 
 type Inf a b = b -> Dist a
 
 -- | infer da @ [prior dist of a] lb @ [likelyhood of b from a]
 infer :: Dist Face -> (Face -> Dist b) -> Inf Face b
 -- [F] -> [b] -> (F -> Prob) -> (F -> (b -> Prob)) -> (b -> (F-> Prob))
-infer da lb = \b a -> lb a b * da a
+infer Dist da lb = \b a -> (*) <$> (lb a <$> b) <*> (da <$> a)
 -- infer da lb = inf
 --   where inf x = Dist (\y -> (*) <$> (lb a <$> b) <*> (Dist da a))
 -- (\x -> p)
