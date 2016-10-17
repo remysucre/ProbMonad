@@ -17,6 +17,7 @@ main = do
   putStrLn $ "I." ++ show (toPercent probI)
   putStrLn $ "J." ++ show (toPercent probJ)
   putStrLn $ "M." ++ show (normalize probM)
+  putStrLn $ "N." ++ show ((fromRational (probN bowl)) :: Double)
   putStrLn $ "P." ++ show ((fromRational (probP bowl)) :: Double)
 
 --------------------------
