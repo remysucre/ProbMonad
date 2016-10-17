@@ -318,7 +318,7 @@ eColr bowl = do
                            sum = (+) <$> f1 <*> f2
                            mark = (> 16) <$> sum
                        in mark))
-  rightMark <- foldr (\dm dn -> normalize $ (do m <- dm
+  rightMark <- foldr (\dm dn -> normalize $! (do m <- dm
                                                 n <- dn
                                                 if m
                                                 then return $ n + 1
