@@ -1,4 +1,4 @@
-module Dice where
+{-# LANGUAGE BangPatterns #-}
 
 import Data.List
 import Data.Ratio
@@ -6,34 +6,18 @@ import Control.Monad
 import System.Environment
 import System.Random
 
--- main = print $ expectation fromIntegral eColTest 
--- main = do 
---   putStrLn "Which problem to run? [C G diencoins]"
---   p <- getLine
---   case p of {("C") -> pc;
---              ("G") -> pg;
---              ("diencoins") -> dnc;
---              (_)  -> putStrLn $ "Problem " ++ p ++ " not yet implemented"}
-
-pg :: IO()
-pg = do
-  putStrLn "What's in the bowl? for example, [4, 6, 6, 12]"
-  ds <- read <$> getLine
-  putStrLn "Expected marks on the right column is"
-  print $ probG ds
-
-pc :: IO()
-pc = do
-  putStrLn "What's in the bowl? for example, [4, 6, 6, 12]"
-  ds <- read <$> getLine
-  let (p1, p2) = probC ds
-  putStrLn $ "Probability of drawing a d6 and a d12 is " ++ show p1
-  putStrLn $ "Probability of drawing only one d20 is " ++ show p2
-
-dnc :: IO()
-dnc = do
-  putStrLn "throw a d6 for N, flip a coin N times, see 3 heads. Then the distribution of faces is: "
-  print $ normalize simpleDieNCoins
+main = do
+  let bowl = replicate 14 20 ++ replicate 14 12 ++ replicate 9 8 ++ replicate 9 6
+  putStrLn $ "A." ++ show probA
+  putStrLn $ "B." ++ show (toPercent probB) 
+  putStrLn $ "C." ++ show (toPercent $ fst (probC bowl), toPercent $ snd (probC bowl))
+  putStrLn $ "D." ++ show (toPercent (probD bowl))
+  putStrLn $ "E." ++ show (toPercent (probE bowl))
+  putStrLn $ "H." ++ show (toPercent probH)
+  putStrLn $ "I." ++ show (toPercent probI)
+  putStrLn $ "J." ++ show (toPercent probJ)
+  putStrLn $ "M." ++ show (normalize probM)
+  putStrLn $ "P." ++ show ((fromRational (probP bowl)) :: Double)
 
 --------------------------
 -- |Probablistic Interface
@@ -146,25 +130,20 @@ instance ProbabilityMonad Dist where
 -- |Inference Interface
 -----------------------
 
-infer :: Eq b => [a] -> Dist b -> (a -> Dist b) -> Dist a
-infer range dobserved f = Dist $ map (\(a, db) -> (a, match db dobserved)) daprior
-  where daprior = map (\x -> (x, f x)) range
-        match (Dist xps) dob = foldr (\(x, px) px' ->  plookup x dob * px + px') 0 xps
-        plookup x (Dist yps) = foldr (\(y, py) px -> if x == y then py + px else px) 0 yps
-
-simpleDieNCoins :: Dist Int
-simpleDieNCoins = do
-  n <- uniform [1..6]
-  fs <- sequence $ replicate n (uniform [H, T])
-  let hs = length $ filter (== H) fs
-  return hs
+infer :: Eq b => Dist a -> (b -> Bool) -> (a -> Dist b) -> Dist a
+infer (Dist dxPrior) observe likelyhood = 
+  Dist $ map (\(x, px) -> (x, px * w x)) dxPrior
+  where w x = pOfb (likelyhood x) observe 
 
 normalize :: Eq a => Dist a -> Dist a
-normalize (Dist xs) = Dist $ foldr ins [] xs
-  where ins (y, py) yps = if elem y (map fst yps) 
+normalize (Dist xs) = Dist $ map (\(x, p) -> (x, p / sump)) dedupped
+   where sump = sum $ map snd dedupped
+         dedupped = foldr ins [] xs
+         ins (y, py) yps = if elem y (map fst yps) 
                           then map (update (y, py)) yps
                           else (y, py) : yps
-        update (x, px) (y, py) = if x == y then (y, px + py) else (y, py)
+         update (x, px) (y, py) = if x == y then (y, px + py) else (y, py)
+
 -------------------------------------------
 -- |Unifinished Monadic Inference Interface
 -------------------------------------------
@@ -209,37 +188,32 @@ probA :: (Dist Int, Dist Int)
 probA = (uniform [1..6], uniform [1..12])
 
 -------------
+-- |Problem B
+-------------
+
+probB :: Probability
+probB = pOfb 
+  (do
+     f1 <- throw (Die 6)
+     f2 <- throw (Die 12)
+     return $ f1 + f2)
+  (== 11)
+
+-------------
 -- |Problem C
 -------------
 
-pOf :: Dist Bool -> Rational
-pOf (Dist bps) = foldl (\tp (b, p) -> if b then p + tp else tp) 0 bps
-
 probC :: [Int] -> (Probability, Probability)
-probC ds = (probC1 dd, probC2 dd)
-  where dd = (uniform $ map Die ds)
-
-probC1 :: Dist Die -> Probability
-probC1 pd = pOf $ pd6d12 pd
-
-probC2 :: Dist Die -> Probability
-probC2 pd = pOf $ pdxd20 pd
-
-p2d :: Dist Die -> Dist (Die, Die)
-p2d pd = do
-  d1 <- pd
-  d2 <- pd
-  return (d1, d2)
-
-pd6d12 :: Dist Die -> Dist Bool
-pd6d12 pd = do
-  (d1, d2) <- p2d pd
-  return $ ((d1 == Die 6) && (d2 == Die 12) || (d2 == Die 6) && (d1 == Die 12))
-
-pdxd20 :: Dist Die -> Dist Bool
-pdxd20 pd = do
-  (d1, d2) <- p2d pd
-  return $ ((d1 /= Die 20) && (d2 == Die 20) || (d2 /= Die 20) && (d1 == Die 20))
+probC bowl = 
+  let p612 = pOfb ((,) <$> draw bowl <*> draw bowl)
+                  (\(d1, d2) -> 
+                      elem (Die 12) [d1, d2] && 
+                      elem (Die 6) [d1, d2])
+      p20 = pOfb ((,) <$> draw bowl <*> draw bowl)
+                 (\(d1, d2) -> 
+                      elem (Die 20) [d1, d2] && 
+                      (d1 /= d2))
+  in (p612, p20)
 
 -------------
 -- |Problem D
@@ -265,18 +239,106 @@ pOfb :: Dist a -> (a -> Bool) -> Probability
 pOfb (Dist dx) f = foldr (\(x, px) p -> if f x then p + px else p) 0 dx / sum (map snd dx)
 
 -------------
--- |Problem G
+-- |Problem E
 -------------
 
-probG :: [Int] -> Probability
-probG ds = 30 * expectation (\b -> if b then 1 else 0) eColTest
+-- infer :: Eq b => Dist a -> (b -> Bool) -> (a -> Dist b) -> Dist a
+
+probE :: [Int] -> Probability
+probE bowl = pOfb 
+  (infer (do d1 <- draw bowl
+             d2 <- draw bowl
+             return (d1, d2)) 
+        (== 11) 
+        (\(d1, d2) -> 
+            do
+              f1 <- throw d1
+              f2 <- throw d2
+              return (f1 + f2)))
+  (\(d1, d2) -> elem (Die 6) [d1, d2] && elem (Die 12) [d1, d2]) 
+
+-------------
+-- |Problem H
+-------------
+
+flipC :: Dist Flip
+flipC = uniform [H, T]
+
+probH :: Probability
+probH = pOfb
+  (do f <- throw (Die 6)
+      fs <- sequence $ replicate f flipC
+      return fs)
+  (\fs -> isInfixOf [H, H, H] fs) 
+
+-------------
+-- |Problem I
+-------------
+
+probI :: Probability
+probI = pOfb dFacePost (== 3)
+  where dFacePost =
+          infer (throw $ Die 6)
+                (\fs -> (length $ filter (== H) fs) == 3)
+                (\n -> sequence $ replicate n flipC)
+
+-------------
+-- |Problem J
+-------------
+
+probJ :: Probability
+probJ = pOfb dfs (\fs -> (length $ filter (== H) fs) == 3)
+  where dfs =
+         (do f <- throw (Die 6)
+             if f > 4 then sequence $ replicate f flipC
+                      else uniform [])
+
+-------------
+-- |Problem M
+-------------
+probM = infer (throw $ Die 6)
+              (\fs -> (length $ filter (== H) fs) == 3)
+              (\n -> sequence $ replicate n flipC)
+
+-------------
+-- |Problem N
+-------------
+
+probN :: [Int] -> Probability
+probN bowl = pOfb (eColr . uniform $ map Die bowl) (== 3)
+
+eColr :: Dist Die -> Dist Int
+eColr bowl = do 
+  Die d1 <- bowl
+  Die d2 <- bowl
+  let throws = 
+        (replicate 3  (let f1 = (uniform [1..d1]);
+                           f2 = (uniform [1..d2]);
+                           sum = (+) <$> f1 <*> f2
+                           mark = (> 16) <$> sum
+                       in mark))
+  rightMark <- foldr (\dm dn -> normalize $ (do m <- dm
+                                                n <- dn
+                                                if m then return $ n + 1
+                                                     else return n))
+                     (return 0)
+                     throws
+  return rightMark
+  
+
+
+-------------
+-- |Problem P
+-------------
+
+probP :: [Int] -> Probability
+probP ds = 30 * expectation (\b -> if b then 1 else 0) eColTest
           where eColTest = eColR (uniform $ map Die ds)
 
 eColR :: Exp Die -> Exp Bool
 eColR bowl = do
   Die d1 <- bowl
   Die d2 <- bowl
-  let f1 = uniform [1..d1]
-  let f2 = uniform [1..d2]
-  m <- (\m n -> (m + n) >= 8) <$> f1 <*> f2
-  return m
+  f1 <- uniform [1..d1]
+  f2 <- uniform [1..d2]
+  return $ f1 + f2 > 16
