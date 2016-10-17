@@ -320,12 +320,14 @@ eColr bowl = do
                        in mark))
   rightMark <- foldr (\dm dn -> normalize $ (do m <- dm
                                                 n <- dn
-                                                if (m && d1 == 12 && d2 == 12)
+                                                if m
                                                 then return $ n + 1
                                                 else return n))
                      (return 0)
                      throws
-  return rightMark
+  if (d1 == 12 && d2 == 12) 
+    then return rightMark
+    else return 0
   
 
 
