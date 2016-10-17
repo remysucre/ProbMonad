@@ -313,15 +313,16 @@ eColr bowl = do
   Die d1 <- bowl
   Die d2 <- bowl
   let throws = 
-        (replicate 3  (let f1 = (uniform [1..d1]);
+        (replicate 30 (let f1 = (uniform [1..d1]);
                            f2 = (uniform [1..d2]);
                            sum = (+) <$> f1 <*> f2
                            mark = (> 16) <$> sum
                        in mark))
   rightMark <- foldr (\dm dn -> normalize $ (do m <- dm
                                                 n <- dn
-                                                if m then return $ n + 1
-                                                     else return n))
+                                                if (m && d1 == 12 && d2 == 12)
+                                                then return $ n + 1
+                                                else return n))
                      (return 0)
                      throws
   return rightMark
